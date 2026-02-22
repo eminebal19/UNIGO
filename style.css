@@ -312,16 +312,18 @@ body {
 }
 
 .step-number {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
-    color: var(--white);
-    z-index: 2;
+    color: var(--navy-dark);
 }
 
 .step-circle {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
+
 
 }
 
@@ -570,4 +572,5 @@ body {
         height: 120px;
     }
 }
+
 
