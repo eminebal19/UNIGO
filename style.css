@@ -1,0 +1,590 @@
+/* ============================================
+   GENEL AYARLAR VE RESET
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Renk paleti - Göbekli Tepe esintili taş tonları + modern teknoloji renkleri */
+    --navy-dark: #1a2332;
+    --navy-medium: #2d3a4f;
+    --turquoise: #4ecdc4;
+    --turquoise-light: #6eddd6;
+    --stone-beige: #e8e4d9;
+    --stone-light: #f5f3ed;
+    --white: #ffffff;
+    --text-dark: #2d3a4f;
+    --text-light: #6b7280;
+    
+    /* Tipografi */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* Spacing */
+    --section-padding: 80px 20px;
+    --container-max-width: 1200px;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   HERO BÖLÜMÜ - Ana giriş alanı
+   ============================================ */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--stone-light) 0%, var(--white) 50%, var(--stone-beige) 100%);
+    overflow: hidden;
+}
+
+/* Göbekli Tepe esintili arka plan deseni - dairesel taş motifleri */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    background-image: 
+        radial-gradient(circle at 20% 30%, var(--navy-dark) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, var(--turquoise) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 50% 50%, var(--navy-medium) 3px, transparent 3px);
+    background-size: 150px 150px, 200px 200px, 100px 100px;
+    background-position: 0 0, 50px 50px, 25px 25px;
+    animation: subtleMove 20s ease-in-out infinite;
+}
+
+@keyframes subtleMove {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, 10px); }
+}
+
+/* Hero içerik alanı */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* Logo alanı - dairesel form */
+/* Logo görseli ayarı */
+.logo-img {
+    width: 500px;
+    height: 400px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+
+.logo-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 100%);
+    box-shadow: 0 10px 30px rgba(30, 58, 82, 0.3);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-circle::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid var(--turquoise);
+    opacity: 0.6;
+}
+
+.logo-circle::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--turquoise-light) 0%, transparent 70%);
+    opacity: 0.4;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-slogan {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--navy-medium);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ============================================
+   BÖLÜM BAŞLIKLARI
+   ============================================ */
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
+}
+
+/* ============================================
+   ÜNİGO NEDİR BÖLÜMÜ
+   ============================================ */
+
+.about {
+    padding: var(--section-padding);
+    background-color: var(--white);
+}
+
+/* Problem ve çözüm kutuları */
+.problem-solution {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.problem-box,
+.solution-box {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-box {
+    background: linear-gradient(135deg, var(--stone-light) 0%, var(--stone-beige) 100%);
+    border-left: 4px solid var(--navy-medium);
+}
+
+.solution-box {
+    background: linear-gradient(135deg, var(--turquoise-light) 0%, var(--turquoise) 100%);
+    border-left: 4px solid var(--navy-dark);
+    color: var(--white);
+}
+
+.problem-box:hover,
+.solution-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.problem-box h3,
+.solution-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--navy-dark);
+}
+
+.solution-box h3 {
+    color: var(--white);
+}
+
+.problem-box p,
+.solution-box p {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.solution-box p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Özellik kartları grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid var(--turquoise);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(78, 205, 196, 0.2);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    color: var(--navy-dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   NASIL ÇALIŞIR BÖLÜMÜ - 3 adımlı süreç
+   ============================================ */
+
+.how-it-works {
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, var(--stone-light) 0%, var(--white) 100%);
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--navy-dark);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.step-circle {
+    width: 180px;
+    height: 180px;
+    margin: 30px auto 25px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--turquoise) 0%, var(--turquoise-light) 100%);
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.step-circle::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    opacity: 0.5;
+}
+
+.step h3 {
+    font-size: 1.3rem;
+    color: var(--navy-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.step p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.step-connector {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--turquoise), var(--turquoise-light));
+    margin: 0 10px;
+    position: relative;
+}
+
+.step-connector::after {
+    content: '→';
+    position: absolute;
+    right: -15px;
+    top: -10px;
+    color: var(--turquoise);
+    font-size: 1.5rem;
+}
+
+/* ============================================
+   TAKIMIMIZ BÖLÜMÜ
+   ============================================ */
+
+.team {
+    padding: var(--section-padding);
+    background-color: var(--white);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--stone-beige) 0%, var(--navy-medium) 100%);
+    border: 4px solid var(--turquoise);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.team-card h3 {
+    font-size: 1.3rem;
+    color: var(--navy-dark);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.team-role {
+    color: var(--turquoise);
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.team-description {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   İLETİŞİM BÖLÜMÜ
+   ============================================ */
+
+.contact {
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 100%);
+    color: var(--white);
+}
+
+.contact .section-title {
+    color: var(--white);
+}
+
+.contact .section-title::after {
+    background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
+}
+
+.contact-content {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.contact-email {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--turquoise-light);
+    font-weight: 500;
+}
+
+.teknofest-note {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+    background-color: var(--navy-dark);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   RESPONSIVE TASARIM - Mobil uyumluluk
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Hero bölümü mobil ayarları */
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-slogan {
+        font-size: 1.4rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    /* Bölüm başlıkları mobil */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Problem-çözüm kutuları mobil */
+    .problem-solution {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adımlar mobil - dikey sıralama */
+    .steps-container {
+        flex-direction: column;
+    }
+    
+    .step-connector {
+        width: 3px;
+        height: 40px;
+        margin: 10px 0;
+    }
+    
+    .step-connector::after {
+        content: '↓';
+        right: -8px;
+        top: 30px;
+    }
+    
+    /* Takım grid mobil */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    /* Özellik kartları mobil */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* İletişim mobil */
+    .contact-email {
+        font-size: 1.2rem;
+    }
+    
+    .teknofest-note {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Çok küçük ekranlar için ek ayarlar */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .logo-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .step-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .step-circle::before {
+        width: 120px;
+        height: 120px;
+    }
+}
